@@ -39,7 +39,7 @@
         } else {
             smartWedContAddr = '0xd09B6E3C8FB7E05e248197EC45c38cD338d66C1a';
         }
-        alert(smartWedContAddress);
+        alert(smartWedContAddr);
     }
 
     // MetaMask injects the web3 library for us.
@@ -52,7 +52,7 @@
     function send() {
       web3.eth.sendTransaction({
         from: web3.eth.coinbase,
-        to: smartWedContAddress,
+        to: smartWedContAddr,
         value: web3.toWei(document.getElementById("amount").value, 'ether')
       }, function(error, result) {
         if (!error) {
