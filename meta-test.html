@@ -47,6 +47,7 @@
       if (typeof web3 === 'undefined') {
         document.getElementById('meta-mask-required').innerHTML = 'You need <a href="https://metamask.io/">MetaMask</a> browser plugin to run this example'
       }
+      setWedContAddr();
     }
     function send() {
       web3.eth.sendTransaction({
