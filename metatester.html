@@ -3,6 +3,18 @@
         <title>testing metamask</title>
 
         <script>
+
+            // intialize vars to go between functions
+            var MyContract;
+            var myContractInstance;
+            var partner1;
+            var partner2;
+            var vows;
+            var owner;
+            var marriageDate;
+            var smartWedContAddr;
+            var indexWeddingDate;
+
             function connectionInit() {
 
                 smartWedContAddr="0xd09B6E3C8FB7E05e248197EC45c38cD338d66C1a";
@@ -27,8 +39,8 @@
                 
                 // contract addresses are hardcoded for now, uncomment one
                
-                myContractInstance = MyContract.at(smartWedContAddr);
-                
+                // myContractInstance = MyContract.at(smartWedContAddr);
+                var myContractInstance = MyContract.at("0x958a8f594101d2c0485a52319f29b2647f2ebc06");
 
                 // gather values for partner1, partner2, vows, owner
                 // partner1 = myContractInstance.partner1.call();
