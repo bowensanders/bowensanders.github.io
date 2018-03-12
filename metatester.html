@@ -55,8 +55,12 @@
                     }
                 });
                 
-                result = myContractInstance.owner.call().call((error, result) => {
-                    console.log(result);
+                result = myContractInstance.owner.call().call(function (error, result) {
+                    if (!error) {
+                        console.log(result);
+                    } else {
+                        console.error(error);
+                    }
                 });
 
                 alert(result);
