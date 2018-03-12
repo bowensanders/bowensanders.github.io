@@ -55,7 +55,7 @@
                     }
                 });
                 
-                result = myContractInstance.owner.call().call(function (error, result) {
+                var myResult = myContractInstance.owner.call(function (error, result) {
                     if (!error) {
                         console.log(result);
                     } else {
@@ -63,7 +63,7 @@
                     }
                 });
 
-                alert(result);
+                alert(myResult);
             }
 
             </script>
