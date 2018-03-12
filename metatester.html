@@ -36,26 +36,20 @@
                 
                 // garrett & stephanie contract address
                 //var myContractInstance = MyContract.at("0x958a8f594101d2c0485a52319f29b2647f2ebc06");
-                
-                gatherValues (function (error, result) {
+              
+
+                // gather values for partner1, partner2, vows, owner
+                // partner1 = myContractInstance.partner1.call();
+                // partner2 = myContractInstance.partner2.call();
+                // vows = myContractInstance.vows.call();
+                // owner = myContractInstance.owner.call();
+                marriageDate = myContractInstance.marriageDate.call(function (error, result) {
                     if (!error) {
                         console.log(result);
                     } else {
                         console.error(error);
                     }
                 });
-
-                
-                }
-
-            function gatherValues() {
-
-                // gather values for partner1, partner2, vows, owner
-                partner1 = myContractInstance.partner1.call();
-                partner2 = myContractInstance.partner2.call();
-                vows = myContractInstance.vows.call();
-                owner = myContractInstance.owner.call();
-                marriageDate = myContractInstance.marriageDate.call();
 
                 alert(marriageDate);
             }
