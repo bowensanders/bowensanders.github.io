@@ -47,13 +47,7 @@
                 // partner2 = myContractInstance.partner2.call();
                 // vows = myContractInstance.vows.call();
                 // owner = myContractInstance.owner.call();
-                marriageDate = myContractInstance.marriageDate.call(function (error, result) {
-                    if (!error) {
-                        console.log(result);
-                    } else {
-                        console.error(error);
-                    }
-                });
+                marriageDate = myContractInstance.marriageDate;
                 console.log(marriageDate);
                 alert(marriageDate);
             }
