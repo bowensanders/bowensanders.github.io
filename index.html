@@ -156,11 +156,11 @@ function indexInit() {
                 //var myContractInstance = MyContract.at("0x958a8f594101d2c0485a52319f29b2647f2ebc06");
 
                 // gather values for partner1, partner2, vows, owner
-                partner1 = myContractInstance .partner1.call();
-                partner2 = myContractInstance .partner2.call();
-                vows = myContractInstance .vows.call();
-                owner = myContractInstance .owner.call();
-                marriageDate = myContractInstance .marriageDate.call();
+                partner1 = myContractInstance.partner1.call();
+                partner2 = myContractInstance.partner2.call();
+                vows = myContractInstance.vows.call();
+                owner = myContractInstance.owner.call();
+                marriageDate = myContractInstance.marriageDate.call();
             }
  
 
@@ -231,6 +231,10 @@ function indexInit() {
                 var acctBalance = getAccountBalance();
                 $('#lblPrintAcctBal').html(acctBalance);
             }
+            function printGuestbookUrl() {
+                var guestbookUrl = '<a href="https://bowensanders.github.io/meta-test.html?smartWedAddress=' + smartWedContAddr +'"class="button">Sign the Guestbook</a>';
+                $('#lblPrintGuestbookUrl').html(guestbookUrl);
+            }
 
             function bodyOnLoad() {
                 setWedContAddr();
@@ -243,6 +247,7 @@ function indexInit() {
                 printMultisigUrl();
                 printMultisigBalance();
                 guestbook();
+                printGuestbookUrl();
                 // Put the second function here
             }
 
@@ -340,7 +345,12 @@ function indexInit() {
                         </p>
                 </div>
                     <ul class="actions">
-                        <li><a href="#" class="button">Sign the Guestbook</a></li>
+                        <li>
+                                <label id="lblPrintGuestbookUrl"></label>
+                            <!--
+                            <a href="#" class="button">Sign the Guestbook</a>
+                            -->
+                        </li>
                     </ul>
             </div>
                 
