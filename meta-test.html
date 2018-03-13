@@ -84,7 +84,7 @@
             document.getElementById('response').innerHTML = '<pre>' + error + '</pre>'
           }
         })
-        printBackUrl();
+        
       }
       // 
       // end Guestbook 
@@ -92,7 +92,7 @@
     </script>
   
   </head>
-  <body>
+  <body onload="printBackUrl()">
 
       <div id="wrapper">
           <!-- Nav Section -->
