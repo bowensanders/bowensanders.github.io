@@ -54,7 +54,14 @@
         //balance = promisify(cb => tokenContract.balanceOf(address, cb))
         //tokenName = promisify(cb => tokenContract.name(cb))
         //tokenSymbol = promisify(cb => tokenContract.symbol(cb))
-        owner = promisify(cb => myContractInstance.owner(cb))
+        owner = myContractInstance.owner.call(function (error, result) {
+            if (!error) {
+                console.log(result);
+            } else {
+                console.error(error);
+            }
+        });
+
         //adjustedBalance = await balance / Math.pow(10, await decimals)
         alert(await owner);
         //document.getElementById("tokenBalance").innerHTML = adjustedBalance;
