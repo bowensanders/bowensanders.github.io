@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>metamask tester two</title>
+
+<!-- include web3.js for blockchain interaction-->
+<script src="https://cdn.rawgit.com/ethereum/web3.js/develop/dist/web3.js"></script>
+
+<!-- include moment - consider making a copy of this into the repo -->
+<script src="https://momentjs.com/downloads/moment.min.js"></script>
+
+<!-- include jQuery - because it looks easier than jumping into angular or react quite yet -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<!-- include bluebird for promisify -->
+<script src="https://cdn.jsdelivr.net/bluebird/latest/bluebird.min.js"></script>
+
+<script>
+            //
+            // BEGIN METAMASK
+            //
+            window.addEventListener('load', function() {
+                // Checking if Web3 has been injected by the browser (Mist/MetaMask)
+                if (typeof web3 !== 'undefined') {
+                    // Use Mist/MetaMask's provider
+                    web3js = new Web3(web3.currentProvider);
+                } else {
+                    console.log('No web3? You should consider trying MetaMask!')
+                    // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
+                    web3js = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+                    }
+                    // Now you can start your app & access web3 freely:
+                    startApp()
+            })    
+            //
+            // END METAMASK
+            //
+
+
+    async function getSmartWedInfo() {
+        var address, contractABI, contractAddress, tokenContract, owner
+        // address = document.getElementById("address").value
+        
+        //contractAddress = document.getElementById("contractAddress").value
+        contractAddress = '0xd09B6E3C8FB7E05e248197EC45c38cD338d66C1a';
+        contractABI = '[{"constant":true,"inputs":[],"name":"numberOfIndex","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"indexdate","type":"uint256"},{"name":"wedaddress","type":"string"},{"name":"partnernames","type":"string"},{"name":"weddingdate","type":"uint256"},{"name":"displaymultisig","type":"uint256"}],"name":"writeIndex","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"partnernames","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"wedaddress","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"indexdate","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"acceptOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"changeOwner","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"indexarray","outputs":[{"name":"indexdate","type":"uint256"},{"name":"wedaddress","type":"string"},{"name":"partnernames","type":"string"},{"name":"weddingdate","type":"uint256"},{"name":"displaymultisig","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_dst","type":"address"},{"name":"_value","type":"uint256"},{"name":"_data","type":"bytes"}],"name":"execute","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"weddingdate","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"displaymultisig","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"newOwner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"anonymous":false,"inputs":[{"indexed":false,"name":"time","type":"uint256"},{"indexed":false,"name":"contractaddress","type":"string"},{"indexed":false,"name":"partners","type":"string"},{"indexed":false,"name":"weddingdate","type":"uint256"},{"indexed":false,"name":"display","type":"uint256"}],"name":"IndexWritten","type":"event"}]';
+
+        tokenContract = web3.eth.contract(contractABI).at(contractAddress)
+
+        //decimals = promisify(cb => tokenContract.decimals(cb))
+        //balance = promisify(cb => tokenContract.balanceOf(address, cb))
+        //tokenName = promisify(cb => tokenContract.name(cb))
+        //tokenSymbol = promisify(cb => tokenContract.symbol(cb))
+        owner = promisify(cb => tokenContract.owner(cb))
+        //adjustedBalance = await balance / Math.pow(10, await decimals)
+        alert(await owner);
+        //document.getElementById("tokenBalance").innerHTML = adjustedBalance;
+        //document.getElementById("tokenInfo").innerHTML = " " + await tokenSymbol + " (" + await tokenName + ")";
+    }
+
+</script>
+
+</head>
+<body onload="getSmartWedInfo()">
+testing
+</body>
