@@ -89,10 +89,15 @@
       // 
       // end Guestbook 
       //
+
+      function bodyOnLoad() {
+        setWedContAddr();
+        printBackUrl();
+      }
     </script>
   
   </head>
-  <body onload="printBackUrl()">
+  <body onload="bodyOnLoad()">
 
       <div id="wrapper">
           <!-- Nav Section -->
