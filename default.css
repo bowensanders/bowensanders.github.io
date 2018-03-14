@@ -432,7 +432,7 @@
 
 	#page
 	{
-		padding: 5em 0em;
+		padding: 2em 0em;
 		text-align: center;
 	}
 	
@@ -573,13 +573,10 @@
 		font-size: 3em;
 	}
 
-/*
+
 	input[type="text"] {
-		width: 300px;
-		display: block;
+		width: 300px;	
 		font-size: 14pt;
-		margin-bottom: 10px;
 		background-color: white;
-		align-self: center;
 	}
 */
