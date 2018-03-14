@@ -63,7 +63,7 @@
           value: web3.toWei(document.getElementById("amount").value, 'ether')
         }, function(error, result) {
           if (!error) {
-            document.getElementById('response').innerHTML = 'Success: <a href="https://testnet.etherscan.io/tx/' + result + '"> View Transaction </a>'
+            document.getElementById('response').innerHTML = 'Success: <a href="https://etherscan.io/tx/' + result + '"> View Transaction </a>'
           } else {
             document.getElementById('response').innerHTML = '<pre>' + error + '</pre>'
           }
@@ -84,7 +84,7 @@
           myContractInstance = MyContract.at(smartWedContAddr);
           myContractInstance.sendMessage(messageFrom, messageTxt, messageUrl, function(error, result) {
           if (!error) {
-            document.getElementById('response').innerHTML = 'Success: <a href="https://testnet.etherscan.io/tx/' + result + '"> View Transaction </a>'
+            document.getElementById('response').innerHTML = 'Success: <a href="https://etherscan.io/tx/' + result + '"> View Transaction </a>'
           } else {
             document.getElementById('response').innerHTML = '<pre>' + error + '</pre>'
           }
