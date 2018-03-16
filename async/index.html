@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>promises, promises</title>
+        
+        <!-- SCRIPT STUFF -->
+        <script>
+        
+        // VARIABLES
+        
+        var txHash = '0x2fce10a6f2e42aa191d33e42a21eca9e0376fad16e9c6b3687488f211d60c3be';
+        
+        // CODE
+        
+        const PromisifyWeb3 = require("./promisifyWeb3.js");
+        PromisifyWeb3.promisify(web3);
+        
+        web3.eth.getTransactionPromise(txHash)
+            .then(function(tx) {
+            console.log(tx);
+        });
+
+        </script>
+    </head>
+    <body>
+        testing happens
+    </body>
+</html>
