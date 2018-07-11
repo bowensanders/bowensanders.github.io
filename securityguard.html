@@ -1,0 +1,162 @@
+<html>
+  <head>
+     <title>SecurityGuard</title>
+
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+<!--    <link href="https://fonts.googleapis.com/css?family=Varela" rel="stylesheet" />
+        <link href="./fonts.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="./default2.css" rel="stylesheet" type="text/css" media="all" /> -->
+        <link rel="stylesheet" href="https://cdn.rawgit.com/Chalarangelo/mini.css/v3.0.0/dist/mini-default.min.css">
+
+
+        <!-- include moment - consider making a copy of this into the repo -->
+        <script src="https://momentjs.com/downloads/moment.min.js"></script>
+
+        <!-- include jQuery - because it looks easier than jumping into angular or react quite yet -->
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+      //
+      // begin Guestbook Functions
+      //
+      // Guestbook variable setup
+      //var smartWedContAddress;
+
+      // get query variable
+      //function getQueryVariable(variable) {
+      //    var query = window.location.search.substring(1);
+      //    var vars = query.split('&');
+      //    for (var i=0; i<vars.length; i++) {
+      //        var pair = vars[i].split('=');
+      //        if (decodeURIComponent(pair[0]) == variable) {
+      //            return decodeURIComponent(pair[1]);
+      //        }
+      //    }
+      //}
+
+      // taken from smartwed page to get address of target contract
+      //function setWedContAddr() {
+      //    smartWedContAddr = getQueryVariable('smartWedAddress');
+      //    if (smartWedContAddr != null) {
+      //         // alert(smartWedContAddr);
+      //    } else {
+      //        // smartWedContAddr = '0xd09B6E3C8FB7E05e248197EC45c38cD338d66C1a';
+      //        alert(error);
+      //        // rinkeby test contract
+      //        // smartWedContAddr = '0x16A594158D24E225c6c11f916E518025b75b0B5C';
+      //    }
+      //    // alert(smartWedContAddr);
+      //}
+
+      // MetaMask injects the web3 library for us.
+      window.onload = function() {
+        if (typeof web3 === 'undefined') {
+          document.getElementById('meta-mask-required').innerHTML = 'You need <a href="https://metamask.io/">MetaMask</a> browser plugin to run this example'
+        }
+        setWedContAddr();
+      }
+
+      // function to send the transaction on button press
+      function send() {
+        web3.eth.sendTransaction({
+          from: web3.eth.coinbase,
+          to: smartWedContAddr,
+          value: web3.toWei(document.getElementById("amount").value, 'ether')
+        }, function(error, result) {
+          if (!error) {
+            document.getElementById('response').innerHTML = 'Success: <a href="https://etherscan.io/tx/' + result + '"> View Transaction </a>'
+          } else {
+            document.getElementById('response').innerHTML = '<pre>' + error + '</pre>'
+          }
+        })
+      }
+
+      function sendCheckIn() {
+          var contractAddress = "0x30f938fed5de6e06a9a7cd2ac3517131c317b1e7"
+          var checkInData = "0x183ff085"
+          web3.eth.sendTransaction({
+              to: contractAddress,
+              data: checkInData
+            },
+              function(error, result) {
+                if (!error) {
+                  document.getElementById('response').innerHTML = 'Success: <a href="https://etherscan.io/tx/' + result + '"> View Transaction </a>'
+                } else {
+                  document.getElementById('response').innerHTML = '<pre>' + error + '</pre>'
+                }
+              });
+      }
+
+
+      //
+      // end Guestbook
+      //
+
+      //function bodyOnLoad() {
+      //  setWedContAddr();
+      //  printBackUrl();
+      //}
+    </script>
+
+  </head>
+  <!-- <body onload="bodyOnLoad()"> -->
+  <body>
+      <div id="wrapper">
+          <!-- Nav Section -->
+          <div id="header-wrapper">
+              <div id="header" class="container">
+                  <div id="logo">
+                      <h1><a href="index.html"><img src="securityguard.png" height="40" width="40" align="top"> SecurityGuard</a></h1>
+                  </div>
+                  <div id="menu">
+                      <ul>
+                        <!--
+                          <li class="current_page_item"><a href="index.html" accesskey="1" title="">Homepage</a></li>
+                          <li><a href="https://wallet.gnosis.pm" accesskey="2" title="" target="new">Access Multisig</a></li>
+                          <li><a href="#" accesskey="3" title="">Sign Guestbook</a></li>
+
+                          <li><a href="index-button-test.html">Choose Contract</a>
+
+                          <li><div id="buttonIndex"></div></li>
+
+                          </li>
+                        -->
+                      </ul>
+                  </div>
+              </div>
+          </div>
+
+        <!-- guestbook form Section -->
+        <div id="meta-mask-required">
+        <div id="page" class="container">
+            <div class="title">
+                <h2>Security Guard:</h2>
+            </div>
+                <span class="byline">
+                  <br>
+                    <a href="#" class="button" onclick="sendCheckIn()">CHECK IN NOW</a>
+                  <div id="response"></div>
+
+                </span>
+
+    </div>
+
+    </div>
+
+    <!-- instructions Section -->
+
+
+    <div id="footer">
+        <div class="container">
+            <div class="title">
+                <p>SecurityGuard is a <a href="https://giveth.io" target="new">Giveth</a> Security Project, Interface by <a href="https://github.com/bowensanders/" target="new">Bowen Sanders</a>.
+                  <br>Theme based on <strong>mini.css</strong>, a free CSS template found at <a href="https://minicss.org/docs" rel="nofollow">minicss.org</a>. </p>
+            </div>
+        </div>
+    </div>
+
+  </body>
+</html>
