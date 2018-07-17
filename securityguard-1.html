@@ -20,7 +20,7 @@
         if (typeof web3 === 'undefined') {
           document.getElementById('meta-mask-required').innerHTML = 'You need <a href="https://metamask.io/">MetaMask</a> browser plugin to run this example'
         }
-        
+
 
       }
 
@@ -57,12 +57,8 @@
 
       function sendDelayPayment() {
 
-        import utils from 'web3-utils'
-        const wei = utils.toWei('decimal_from_input');
-        const hexVal = utils.toHex(wei);
-
           var contractAddress = "0x30f938fed5de6e06a9a7cd2ac3517131c317b1e7";
-          var delayPaymentData = "0x846a5dde" + hexVal('PaymentID'); + hexVal('DelayTime');
+          var delayPaymentData = "0x846a5dde" + ('PaymentID') + ('DelayTime');
           web3.eth.sendTransaction({
               to: contractAddress,
               data: delayPaymentData
