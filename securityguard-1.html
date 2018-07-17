@@ -1,0 +1,127 @@
+<html>
+  <head>
+     <title>SecurityGuard</title>
+
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+
+        <link rel="stylesheet" href="https://cdn.rawgit.com/Chalarangelo/mini.css/v3.0.0/dist/mini-default.min.css">
+
+        <script src="https://momentjs.com/downloads/moment.min.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+
+      // MetaMask injects the web3 library for us.
+      window.onload = function() {
+        if (typeof web3 === 'undefined') {
+          document.getElementById('meta-mask-required').innerHTML = 'You need <a href="https://metamask.io/">MetaMask</a> browser plugin to run this example'
+        }
+        import utils from 'web3-utils'
+        const wei = utils.toWei('decimal_from_input');
+        const hexVal = utils.toHex(wei);
+
+      }
+
+      // function to send the transaction on button press
+      function send() {
+        web3.eth.sendTransaction({
+          from: web3.eth.coinbase,
+          to: smartWedContAddr,
+          value: web3.toWei(document.getElementById("amount").value, 'ether')
+        }, function(error, result) {
+          if (!error) {
+            document.getElementById('response').innerHTML = 'Success: <a href="https://etherscan.io/tx/' + result + '"> View Transaction </a>'
+          } else {
+            document.getElementById('response').innerHTML = '<pre>' + error + '</pre>'
+          }
+        })
+      }
+
+      function sendCheckIn() {
+          var contractAddress = "0x30f938fed5de6e06a9a7cd2ac3517131c317b1e7"
+          var checkInData = "0x183ff085"
+          web3.eth.sendTransaction({
+              to: contractAddress,
+              data: checkInData
+            },
+              function(error, result) {
+                if (!error) {
+                  document.getElementById('response').innerHTML = 'Success: <a href="https://etherscan.io/tx/' + result + '"> View Transaction </a>'
+                } else {
+                  document.getElementById('response').innerHTML = '<pre>' + error + '</pre>'
+                }
+              });
+      }
+
+      function sendDelayPayment() {
+
+        import utils from 'web3-utils'
+        const wei = utils.toWei('decimal_from_input');
+        const hexVal = utils.toHex(wei);
+
+          var contractAddress = "0x30f938fed5de6e06a9a7cd2ac3517131c317b1e7";
+          var delayPaymentData = "0x846a5dde" + hexVal('PaymentID'); + hexVal('DelayTime');
+          web3.eth.sendTransaction({
+              to: contractAddress,
+              data: delayPaymentData
+            },
+              function(error, result) {
+                if (!error) {
+                  document.getElementById('response').innerHTML = 'Success: <a href="https://etherscan.io/tx/' + result + '"> View Transaction </a>'
+                } else {
+                  document.getElementById('response').innerHTML = '<pre>' + error + '</pre>'
+                }
+              });
+      }
+
+
+
+    </script>
+
+  </head>
+  <!-- <body onload="bodyOnLoad()"> -->
+  <body>
+      <header>
+        <img src="securityguard.png" height="40" width="40" align="top">
+        <a href="#" class="logo">SecurityGuard</a>
+      </header>
+
+        <!-- guestbook form Section -->
+        <div id="meta-mask-required">
+          <div class="card">
+            <h3>Security Guard Commands:</h3>
+            <br>
+            <a href="#" class="button" onclick="sendCheckIn()">Check In Now</a>
+          </div>
+          <div id="response"></div>
+            <br>
+          <div class="card">
+            <h3>Delay Payment</h3>
+            <div class="input-group">
+              <label for="PaymentID">PaymentID</label>
+              <input type="text" id="PaymentID" placeholder="PaymentID"/>
+              <br>
+              <label for="DelayTime">DelayTime</label>
+              <input type="text" id="DelayTime" placeholder="DelayTime"/>
+              <br>
+              <a href="#" class="button" onclick="sendDelayPayment()">Delay Now</a>
+            </div>
+            <br>
+            <br>
+        </div>
+
+
+
+    <!-- instructions Section -->
+
+
+    <footer>
+      <p>SecurityGuard is a <a href="https://giveth.io" target="new">Giveth</a> Security Project, Interface by <a href="https://github.com/bowensanders/" target="new">Bowen Sanders</a>.<br>Theme based on <strong>mini.css</strong>, a free CSS template found at <a href="https://minicss.org/docs" rel="nofollow">minicss.org</a>.</p>
+    </footer>
+
+  </body>
+</html>
