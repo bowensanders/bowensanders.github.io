@@ -11,8 +11,9 @@ async function getResults(query) {
       console.log(`------------------------------------------------------------`);
       data.data.forEach(element => {
           let eth = (element.maxAmount / 1000000000000000000)
+          let eth2 = eth.toFixed(5);
         console.log(
-            `${eth} ETH https://beta.giveth.io/campaigns/${element.campaignId}/milestones/${element._id}`
+            `${eth2} ETH https://beta.giveth.io/campaigns/${element.campaignId}/milestones/${element._id} ${element.status}`
           );
         
       });
