@@ -11,9 +11,14 @@ async function getResults(query) {
       console.log(`------------------------------------------------------------`);
       data.data.forEach(element => {
           let eth = (element.maxAmount / 1000000000000000000)
-          let eth2 = eth.toFixed(8);
+          let eth2 = "";
+          if (eth < 10) { 
+            eth2 = ` ${eth.toFixed(8)}`;
+          } else {
+            eth2 = eth.toFixed(8);
+          }
         console.log(
-            `${eth2} ETH https://beta.giveth.io/campaigns/${element.campaignId}/milestones/${element._id} ${element.status}`
+            `${eth2} ETH | https://beta.giveth.io/campaigns/${element.campaignId}/milestones/${element._id} | ${element.status}`
           );
         
       });
@@ -25,5 +30,5 @@ async function getResults(query) {
   //console.log(res);
 }
 
-//getResults("0xd00cc82a132f421bA6414D196BC830Db95e2e7Dd");
+//getResults("0xd00cc82a132f421bA6414D196BC830Db95e2e7Dd"); /
 getResults(prompt("[beta.giveth.io] OPEN CONSOLE (CMD-OPT-J) Check What Recipient Address?"));
