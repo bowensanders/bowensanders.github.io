@@ -16,7 +16,7 @@ async function getResults(query) {
     // format ETH values to 2 digits or 1 digit with space before decimal, 8 decimal places long
     // then print each line to console
     data.data.forEach(element => {
-      let eth = (element.maxAmount / 1000000000000000000)
+      let eth = (element.totalDonated / 1000000000000000000)
       let eth2 = "";
       if (eth < 10) { 
         eth2 = ` ${eth.toFixed(8)}`;
